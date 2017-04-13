@@ -1,54 +1,34 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
- 
-namespace Funfair
-{
-    class Park
-    {
-        public string Name { get; set; }
-        public List<Attraction> ParkAttractions { get; set; }
-    }
-}
- 
-using System;
-using System.Collections.Generic;
-using System.Text;
- 
-namespace Funfair
-{
-    class Attraction
-    {
-        public string Name { get; set; }
-        public int MinimumHeightYesSupervision { get; set; }
-        public int MinimumHeightNoSupervision { get; set; }
-        public int MaximumHeight { get; set; }
-    }
-}
- 
-using System;
-using System.Collections.Generic;
- 
-namespace Funfair
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What is your length?");
+            Console.WriteLine("1 voor Nederlands, 2 for English");
+            String lang = Console.ReadLine();
+            int userLang = Convert.ToInt32(lang);
+
+            if (userLang == 1) { Console.WriteLine("What is je lengte in cm?"); }
+            else { Console.WriteLine("What is your length in inches?"); }
             String length = Console.ReadLine();
             int UserLength = Convert.ToInt32(length);
- 
-            Attraction HarryPotterAndTheEscapeFromGringotts = new Attraction() { Name = "Harry Potter and the Escape from Gringotts", MinimumHeightYesSupervision = 42 , MinimumHeightNoSupervision = 48, MaximumHeight = 200};
+
+            Attraction HarryPotterAndTheEscapeFromGringotts = new Attraction() { Name = "Harry Potter and the Escape from Gringotts", MinimumHeightYesSupervision = 42, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction RevengeoftheMummy = new Attraction() { Name = "Revenge of the Mummy", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction MeninBlackAlienAttack = new Attraction() { Name = "Men in Black Alien Attack", MinimumHeightYesSupervision = 42, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
-            Attraction WoodyWoodpeckersNuthouseCoaster = new Attraction() { Name = "Woody Woodpecker's Nuthouse Coaster", MinimumHeightYesSupervision = 36, MinimumHeightNoSupervision = 48, MaximumHeight= 200 };
-            Attraction TheSimpsonsRide = new Attraction() { Name = "The Simpsons Ride", MinimumHeightYesSupervision = 40, MinimumHeightNoSupervision= 48, MaximumHeight = 200 };
+            Attraction WoodyWoodpeckersNuthouseCoaster = new Attraction() { Name = "Woody Woodpecker's Nuthouse Coaster", MinimumHeightYesSupervision = 36, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
+            Attraction TheSimpsonsRide = new Attraction() { Name = "The Simpsons Ride", MinimumHeightYesSupervision = 40, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction HollywoodRipRideRockit = new Attraction() { Name = "Hollywood Rip Ride Rockit", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 51, MaximumHeight = 79 };
             Attraction ETAdventure = new Attraction() { Name = "E.T. Adventure", MinimumHeightYesSupervision = 34, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction DespicableMeMinionMayhem = new Attraction() { Name = "Despicable Me Minion Mayhem", MinimumHeightYesSupervision = 40, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction TransformersTheRide3D = new Attraction() { Name = "Transformers The Ride-3D", MinimumHeightYesSupervision = 40, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
- 
+
             Attraction JurassicParkRiverAdventure = new Attraction() { Name = "Jurassic Park River Adventure", MinimumHeightYesSupervision = 42, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction PteranodonFlyers = new Attraction() { Name = "Pteranodon Flyers", MinimumHeightYesSupervision = 36, MinimumHeightNoSupervision = 56, MaximumHeight = 200 };
             Attraction DragonChallenge = new Attraction() { Name = "Dragon Challenge", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 54, MaximumHeight = 200 };
@@ -62,7 +42,7 @@ namespace Funfair
             Attraction FlightoftheHippogriff = new Attraction() { Name = "Flight of the Hippogriff", MinimumHeightYesSupervision = 36, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction CatintheHat = new Attraction() { Name = "Cat in the Hat", MinimumHeightYesSupervision = 36, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction SkullIslandReignofKong = new Attraction() { Name = "Skull Island: Reign of Kong", MinimumHeightYesSupervision = 36, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
- 
+
             Attraction TheBarnstormeratGoofysWiseacreFarm = new Attraction() { Name = "The Barnstormer at Goofy's Wiseacre Farm", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 35, MaximumHeight = 200 };
             Attraction SplashMountain = new Attraction() { Name = "Splash Mountain", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
             Attraction BigThunderMountainRailroad = new Attraction() { Name = "Big Thunder Mountain Railroad", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
@@ -70,84 +50,92 @@ namespace Funfair
             Attraction SpaceMountain = new Attraction() { Name = "Space Mountain", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 44, MaximumHeight = 200 };
             Attraction TomorrowlandIndySpeedway = new Attraction() { Name = "Tomorrowland Indy Speedway", MinimumHeightYesSupervision = 32, MinimumHeightNoSupervision = 54, MaximumHeight = 200 };
             Attraction SevenDwarfsMineTrain = new Attraction() { Name = "Seven Dwarfs Mine Train", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 38, MaximumHeight = 200 };
- 
+
             Attraction TestTrack = new Attraction() { Name = "Test Track", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
             Attraction Soarin = new Attraction() { Name = "Soarin'", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
             Attraction MissionSPACE = new Attraction() { Name = "Mission: SPACE", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 44, MaximumHeight = 200 };
- 
+
             Attraction TheTwilightZoneTowerofTerror = new Attraction() { Name = "The Twilight Zone Tower of Terror", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
             Attraction StarToursTheAdventuresContinue = new Attraction() { Name = "Star Tours: The Adventures Continue", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
             Attraction RocknRollerCoasterStarringAerosmith = new Attraction() { Name = "Rock-n-Roller Coaster Starring Aerosmith", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
- 
+
             Attraction KaliRiverRapids = new Attraction() { Name = "Kali River Rapids", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 38, MaximumHeight = 200 };
             Attraction Dinosaur = new Attraction() { Name = "Dinosaur", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 40, MaximumHeight = 200 };
             Attraction ExpeditionEverest = new Attraction() { Name = "Expedition Everest", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 44, MaximumHeight = 200 };
             Attraction PrimevalWhirl = new Attraction() { Name = "Primeval Whirl", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
- 
+
             Attraction TikesPeak = new Attraction() { Name = "Tikes Peak", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 0, MaximumHeight = 48 };
             Attraction Chairlift = new Attraction() { Name = "Chairlift", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 32, MaximumHeight = 200 };
             Attraction SlushGusher = new Attraction() { Name = "Slush Gusher", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction SummitPlummet = new Attraction() { Name = "Summit Plummet", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction DownhillDoubleDipper = new Attraction() { Name = "Downhill Double Dipper", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
- 
+
             Attraction KetachakiddeeCreek = new Attraction() { Name = "Ketachakiddee Creek", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 0, MaximumHeight = 48 };
             Attraction BaySlide = new Attraction() { Name = "Bay Slide", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 0, MaximumHeight = 60 };
             Attraction CrushnGusher = new Attraction() { Name = "Crush 'n' Gusher", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
             Attraction HumungaKowabunga = new Attraction() { Name = "Humunga Kowabunga", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
- 
+
             Attraction PiratesoftheCarribbeanBattleforBuccaneeGold = new Attraction() { Name = "Pirates of the Carribbean: Battle for Buccaneer Gold", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 35, MaximumHeight = 200 };
             Attraction MightyDucksPinballSlam = new Attraction() { Name = "Mighty Ducks Pinball Slam", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 48, MaximumHeight = 200 };
-            Attraction BuzzlightyearsAstroBlaster= new Attraction() { Name = "Buzz lightyear's AstroBlaster", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 51, MaximumHeight = 200 };
+            Attraction BuzzlightyearsAstroBlaster = new Attraction() { Name = "Buzz lightyear's AstroBlaster", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 51, MaximumHeight = 200 };
             Attraction CyberSpaceMountain = new Attraction() { Name = "CyberSpace Mountain", MinimumHeightYesSupervision = 200, MinimumHeightNoSupervision = 51, MaximumHeight = 200 };
- 
+
             List<Attraction> UniversalStudioFloridaList = new List<Attraction> { HarryPotterAndTheEscapeFromGringotts, RevengeoftheMummy, MeninBlackAlienAttack, WoodyWoodpeckersNuthouseCoaster, TheSimpsonsRide, HollywoodRipRideRockit, ETAdventure, DespicableMeMinionMayhem, TransformersTheRide3D };
             List<Attraction> UniversalsIslandofAdventureList = new List<Attraction> { JurassicParkRiverAdventure, PteranodonFlyers, DragonChallenge, DudleyDoRightsRipsawFalls, PopeyeBlutosBilgeRatBarges, TheIncredibleHulkCoaster, TheAmazingAdventuresofSpiderMan, DoctorDoomsFearfall, TheHighintheSkySeussTrolleyTrainRide, HarryPotterandtheForbiddenJourney, FlightoftheHippogriff, CatintheHat, SkullIslandReignofKong };
             List<Attraction> MagicKingdomParkList = new List<Attraction> { TheBarnstormeratGoofysWiseacreFarm, SplashMountain, BigThunderMountainRailroad, StitchsGreatEscape, SpaceMountain, TomorrowlandIndySpeedway, SevenDwarfsMineTrain };
-            List<Attraction> EpcotList = new List<Attraction> { TestTrack, Soarin, MissionSPACE  };
+            List<Attraction> EpcotList = new List<Attraction> { TestTrack, Soarin, MissionSPACE };
             List<Attraction> DisneysHollywoodStudiosList = new List<Attraction> { TheTwilightZoneTowerofTerror, StarToursTheAdventuresContinue, RocknRollerCoasterStarringAerosmith };
             List<Attraction> AnimalKingdomThemeParkList = new List<Attraction> { KaliRiverRapids, Dinosaur, ExpeditionEverest, PrimevalWhirl };
-            List<Attraction> DisneysBlizzardBeachWaterParkList = new List<Attraction> { TikesPeak, Chairlift, SlushGusher, SummitPlummet, DownhillDoubleDipper  };
+            List<Attraction> DisneysBlizzardBeachWaterParkList = new List<Attraction> { TikesPeak, Chairlift, SlushGusher, SummitPlummet, DownhillDoubleDipper };
             List<Attraction> DisneysTyphoonLagoonWaterParkList = new List<Attraction> { KetachakiddeeCreek, BaySlide, CrushnGusher, HumungaKowabunga };
             List<Attraction> DisneyQuestIndoorInteractiveThemeParkList = new List<Attraction> { PiratesoftheCarribbeanBattleforBuccaneeGold, MightyDucksPinballSlam, BuzzlightyearsAstroBlaster, CyberSpaceMountain };
- 
+
             Park UniversalStudioFlorida = new Park() { Name = "Universal Studio Florida", ParkAttractions = UniversalStudioFloridaList };
             Park UniversalsIslandofAdventure = new Park() { Name = "Universal' s Island of Adventure", ParkAttractions = UniversalsIslandofAdventureList };
             Park MagicKingdomPark = new Park() { Name = "Magic Kingdom Park", ParkAttractions = MagicKingdomParkList };
-            Park Epcot = new Park() { Name = "Epcot",  ParkAttractions = EpcotList };
+            Park Epcot = new Park() { Name = "Epcot", ParkAttractions = EpcotList };
             Park DisneysHollywoodStudios = new Park() { Name = "Disney's Hollywood Studio's", ParkAttractions = DisneysHollywoodStudiosList };
             Park AnimalKingdomThemePark = new Park() { Name = "Animal Kingdom Theme Park", ParkAttractions = AnimalKingdomThemeParkList };
             Park DisneysBlizzardBeachWaterPark = new Park() { Name = "Disney's Blizzard Beach Water Park", ParkAttractions = DisneysBlizzardBeachWaterParkList };
-            Park DisneysTyphoonLagoonWaterPark = new Park() { Name = "Disney's Typhoon Lagoon Water Park", ParkAttractions = DisneysTyphoonLagoonWaterParkList};
+            Park DisneysTyphoonLagoonWaterPark = new Park() { Name = "Disney's Typhoon Lagoon Water Park", ParkAttractions = DisneysTyphoonLagoonWaterParkList };
             Park DisneyQuestIndoorInteractiveThemePark = new Park() { Name = "DisneyQuest Indoor Interactive Theme Park", ParkAttractions = DisneyQuestIndoorInteractiveThemeParkList };
- 
+
             List<Park> Parks = new List<Park> { UniversalStudioFlorida, UniversalsIslandofAdventure, MagicKingdomPark, Epcot, DisneysHollywoodStudios, AnimalKingdomThemePark, DisneysBlizzardBeachWaterPark, DisneysTyphoonLagoonWaterPark, DisneyQuestIndoorInteractiveThemePark };
- 
+
             foreach (var park in Parks)
             {
                 Console.WriteLine("____________________________________________________");
                 Console.WriteLine(park.Name);
                 Console.WriteLine("");
- 
+
+                double convertLength;
+                if (userLang == 1) { convertLength = UserLength / 2.54; } // NL gebruiker voerde centimeters in, die we nu pas gaan converteren naar inches
+                else { convertLength = UserLength; }
+
                 foreach (var attraction in park.ParkAttractions)
                 {
-                    if (UserLength < attraction.MinimumHeightNoSupervision)
+                    if (convertLength < attraction.MinimumHeightNoSupervision) // formerly (UserLength < attraction.MinimumHeightNoSupervision) etc.
                     {
-                        Console.WriteLine("You can't go into: " + attraction.Name);
+                        if (userLang == 1) { Console.WriteLine("Je kan hier niet op: " + attraction.Name); }
+                        else { Console.WriteLine("You can't go into: " + attraction.Name); }
                     }
- 
-                    if (UserLength >= attraction.MinimumHeightYesSupervision && UserLength < attraction.MinimumHeightNoSupervision)
+
+                    if (convertLength >= attraction.MinimumHeightYesSupervision && convertLength < attraction.MinimumHeightNoSupervision)
                     {
-                    Console.WriteLine("-----------------> If you're with supervision, greater than " + Convert.ToString(attraction.MinimumHeightNoSupervision) + ". Enjoy the ride!!");
+                        if (userLang == 1) { Console.WriteLine("-----------------> Als je met supervisie gaat, langer dan " + Convert.ToString(attraction.MinimumHeightNoSupervision*2.54) + ". Veel plezier!!"); } // convert inches to cm
+                        else { Console.WriteLine("-----------------> If you're with supervision, taller than " + Convert.ToString(attraction.MinimumHeightNoSupervision) + ". Enjoy the ride!!"); } 
                     }
- 
-                    if (UserLength > attraction.MaximumHeight)
+
+                    if (convertLength > attraction.MaximumHeight)
                     {
-                        Console.WriteLine("You will not fit in: " + attraction.Name);
+                        if (userLang == 1) { Console.WriteLine("Je zal niet passen in: " + attraction.Name); }
+                        else { Console.WriteLine("You will not fit in: " + attraction.Name); } 
                     }
                 }
             }
- 
+
             Console.ReadLine();
+
         }
     }
 }
